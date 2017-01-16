@@ -1,0 +1,27 @@
+{
+  "name": "homebridge-httpPiTS",
+  "version": "1.0.0",
+  "description": "homebridge plugin for HTTP PiTS sensors (temperature, humidity, air/pressure)",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin",
+    "temperature",
+    "humidity",
+    "airpressure",
+    "Pi Temperature Sentinel"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": {
+    "name": "TGD"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tgd-consulting/homebridge-httpPiTS.git"
+  },
+  "dependencies": {
+    "request": "^2.79.0"
+  }
+}
