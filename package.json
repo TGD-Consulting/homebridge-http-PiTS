@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tgd-consulting/homebridge-httpPiTS.git"
+    "url": "git://github.com/TGD-Consulting/homebridge-http-PiTS.git"
   },
   "dependencies": {
     "request": "^2.79.0"
