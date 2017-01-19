@@ -2,9 +2,9 @@
  * Homebridge-Plugin for PiTS-Sensors (temperature, humidity, air/pressure)
  *
  * Sensor Request example URL:
- * http://192.168.0.10:8080/cgi-bin/homebridge.html?sensor=76&type=temperature
+ * http://192.168.0.10:8080/cgi-bin/homebridge.html?sensor=76&type=temperature&token=000000003cb62dc7
  *
- * Sensor returns 
+ * PiTS-webserver returns current sensor value 
  * {"value":"55.6"}
  *
  * License: MIT
@@ -18,9 +18,9 @@ var request = require('request');
 
 //var temperatureService;
 //var humidityService;
-var url
-var humidity = 0;
-var temperature = 0;
+//var url
+//var humidity = 0;
+//var temperature = 0;
 
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
