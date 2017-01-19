@@ -16,12 +16,6 @@ var Service, Characteristic;
 var inherits = require('util').inherits;
 var request = require('request');
 
-//var temperatureService;
-//var humidityService;
-//var url
-//var humidity = 0;
-//var temperature = 0;
-
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
@@ -62,8 +56,8 @@ module.exports = function (homebridge) {
 // Get data from config file 
 function HttpPiTS(log, config) {
     this.log = log;
-	this.debug = config["debug"] || false;
-	this.debug && this.log('HttpPiTS: reading config');
+    this.debug = config["debug"] || false;
+    this.debug && this.log('HttpPiTS: reading config');
 
     // url info
     this.url = config["url"];
@@ -76,10 +70,6 @@ function HttpPiTS(log, config) {
     this.valueTemperature = config["valueTemperature"];
     this.valueHumidity = config["valueHumidity"];
     this.valueAirPressure = config["valueAirPressure"];
-
-//	this.temperatureService;
-//	this.humidityService;
-//        this.pressureService;
 }
 
 HttpPiTS.prototype = {
