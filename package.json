@@ -22,6 +22,7 @@
     "url": "git://github.com/TGD-Consulting/homebridge-http-PiTS.git"
   },
   "dependencies": {
+    "util": "^0.10.3",
     "request": "^2.79.0"
   }
 }
