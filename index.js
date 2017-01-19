@@ -203,7 +203,7 @@ HttpPiTS.prototype = {
         if (this.valueHumidity && (this.service != "HumiditySensor")) {
             service.addCharacteristic(Characteristic.CurrentRelativeHumidity)
             .setProps({minValue: 0, maxValue: 100})
-                .on('get', this.getCurrentRelativeHumidity.bind(this));
+                .on('get', this.getCurrentHumidity.bind(this));
         }
         if (this.valueAirPressure && (this.service != "AirPressureSensor") && (this.service != "PressureSensor")) {
             service.addCharacteristic(EveAirPressure)
