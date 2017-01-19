@@ -187,7 +187,7 @@ HttpPiTS.prototype = {
 
         services = services.concat(this.primaryservice);
         if (services.length === 1) {
-            this.debug this.log.warn("WARN: Only the InformationService was successfully configured for " + this.name + "! No device services available!");
+            this.debug && this.log.warn("WARN: Only the InformationService was successfully configured for " + this.name + "! No device services available!");
             return services;
         }
 
