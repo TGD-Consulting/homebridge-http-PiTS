@@ -85,7 +85,7 @@ function HttpPiTS(log, config) {
 HttpPiTS.prototype = {
 
     httpRequest: function (url, method, callback) {
-		this.debug && this.log('httpRequest: '+method+' '+url);
+		this.debug && this.log('HTTP-Request: '+method+' '+url);
         request({
                     uri: url,
                     method: method,
@@ -105,7 +105,7 @@ HttpPiTS.prototype = {
     },
 
     getCurrent: function (callback) {
-  	this.debug && this.log('getSensorTemperatureValue');
+  	this.debug && this.log('getSensor Value(s)');
 	this.httpRequest(this.url,this.http_method,function(error, response, body) {
 		if (error) {
 			this.log('HTTP get failed: %s', error.message);
@@ -114,20 +114,20 @@ HttpPiTS.prototype = {
 			this.debug && this.log('HTTP success. Got result ['+body+']');
 			var info = JSON.parse(body);
                         if(this.valueTemperature !== false)
-                          this.primaryservice.setCharacteristic(Characteristic.CurrentTemperature, info.temperature);
+                          this.primaryservice.setCharacteristic(Characteristic.CurrentTemperature, Number(info.temperature));
                         if(this.valueHumidity !== false)
-                          this.primaryservice.setCharacteristic(Characteristic.CurrentRelativeHumidity, info.humidity);
+                          this.primaryservice.setCharacteristic(Characteristic.CurrentRelativeHumidity, Number(info.humidity));
                         if(this.valueAirPressure !== false)
-                          this.primaryservice.setCharacteristic(EveAirPressure, info.airpressure);
+                          this.primaryservice.setCharacteristic(EveAirPressure, Number(info.airpressure));
 
 			this.debug && this.log(info);
 
                         if(this.valueTemperature !== false)
-                          this.valueTemperature = info.temperature;
+                          this.valueTemperature = Number(info.temperature);
                         if(this.valueHumidity !== false)
-                          this.valueHumidity = info.humidity;
+                          this.valueHumidity = Number(info.humidity);
                         if(this.valueAirPressure !== false)
-                          this.valueAirPressure = info.airpressure;
+                          this.valueAirPressure = Number(info.airpressure);
 
 			callback(null, this.valueTemperature);
 		}
