@@ -16,8 +16,8 @@ var Service, Characteristic;
 var inherits = require('util').inherits;
 var request = require('request');
 
-var temperatureService;
-var humidityService;
+//var temperatureService;
+//var humidityService;
 var url
 var humidity = 0;
 var temperature = 0;
@@ -77,9 +77,9 @@ function HttpPiTS(log, config) {
     this.valueHumidity = config["valueHumidity"];
     this.valueAirPressure = config["valueAirPressure"];
 
-	this.temperatureService;
-	this.humidityService;
-        this.pressureService;
+//	this.temperatureService;
+//	this.humidityService;
+//        this.pressureService;
 }
 
 HttpPiTS.prototype = {
@@ -114,11 +114,11 @@ HttpPiTS.prototype = {
 			this.debug && this.log('HTTP success. Got result ['+body+']');
 			var info = JSON.parse(body);
                         if(this.valueTemperature !== false)
-                          this.temperatureService.setCharacteristic(Characteristic.CurrentTemperature, info.temperature);
+                          this.primaryservice.setCharacteristic(Characteristic.CurrentTemperature, info.temperature);
                         if(this.valueHumidity !== false)
-                          this.humidityService.setCharacteristic(Characteristic.CurrentRelativeHumidity, info.humidity);
+                          this.primaryservice.setCharacteristic(Characteristic.CurrentRelativeHumidity, info.humidity);
                         if(this.valueAirPressure !== false)
-                          this.pressureService.setCharacteristic(EveAirPressure, info.airpressure);
+                          this.primaryservice.setCharacteristic(EveAirPressure, info.airpressure);
 
 			this.debug && this.log(info);
 
@@ -129,7 +129,7 @@ HttpPiTS.prototype = {
                         if(this.valueAirPressure !== false)
                           this.valueAirPressure = info.airpressure;
 
-			callback(null, this.temperature);
+			callback(null, this.valueTemperature);
 		}
 	}.bind(this));
     },
