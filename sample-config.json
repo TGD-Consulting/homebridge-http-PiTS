@@ -3,20 +3,50 @@
         "name": "HomebridgePI",
         "username": "CD:22:3D:E3:CE:30",
         "port": 51826,
-        "pin": "031-45-156"
+        "pin": "031-45-154"
     },
     
-    "description": "The Onion!",
+    "description": "This is an example configuration file with fake accessories. You can use this as a template for creating your own configuration file containing devices/sensors you actually use with PiTS-It!.",
 
     "platforms": [],
 
     "accessories": [
         {
-            "accessory": "HttpTemphum",
+            "accessory": "HttpPiTS",
             "name": "Living Room Weather",
-            "url": "http://192.168.1.210/weather",
+            "url": "http://192.168.1.210:8080/cgi-bin/homebridge.html?sensor=76&type=all&token=000000003cb62dc7",
             "http_method": "GET",
-            "humidity": true
+            "service": "FakeEveWeatherSensor",
+            "manufacturer": "Bosch",
+            "model": "BME280",
+            "sensor": "76",
+            "valueTemperature": "1",
+            "valueHumidity":    "2",
+            "valueAirPressure": "3"
+        },
+        {
+            "accessory": "HttpPiTS",
+            "name": "Outdoor Weather",
+            "url": "http://192.168.1.210:8080/cgi-bin/homebridge.html?sensor=77&type=all&token=000000003cb62dc7",
+            "http_method": "GET",
+            "service": "FakeEveWeatherSensorWithLog",
+            "manufacturer": "Bosch",
+            "model": "BMP280",
+            "sensor": "77",
+            "valueTemperature": "1",
+            "valueAirPressure": "2" 
+        },
+        {
+            "accessory": "HttpPiTS",
+            "name": "flow temperature of the heating",
+            "url": "http://192.168.1.210:8080/cgi-bin/homebridge.html?sensor=76&type=all&token=000000003cb62dc7",
+            "http_method": "GET",
+            "service": "TemperatureSensor",
+            "manufacturer": "Dallas",
+            "model": "DS18B20",
+            "sensor": "76",
+            "valueTemperature": "1"
         }
+
     ]
 }
