@@ -13,6 +13,7 @@
  */
 
 var Service, Characteristic;
+var inherits = require('util').inherits;
 var request = require('request');
 
 var temperatureService;
