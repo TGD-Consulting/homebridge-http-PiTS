@@ -23,7 +23,7 @@ module.exports = function (homebridge) {
     ////////////////////////////// Custom characteristics //////////////////////////////
     EveAirPressure = function() {
         //todo: only rough guess of extreme values -> use correct min/max if known
-        Characteristic.call(this, 'Eve AirPressure', 'E863F10F-079E-48FF-8F27-9C2605A29F52');
+        Characteristic.call(this, 'PiTS AirPressure', 'E863F10F-079E-48FF-8F27-9C2605A29F52');
         this.setProps({
             format: Characteristic.Formats.UINT16,
             unit: "hPa",
@@ -158,13 +158,13 @@ HttpPiTS.prototype = {
                 break;
 
             case "FakeEveWeatherSensor":
-                this.primaryservice = new EveWeatherService("Eve Weather");
+                this.primaryservice = new EveWeatherService("PiTS Ambient Meter");
                 this.primaryservice.getCharacteristic(Characteristic.CurrentTemperature)
                     .on('get', this.getCurrent.bind(this));
                 break;
 
             case "FakeEveWeatherSensorWithLog":
-                this.primaryservice = new EveWeatherService("Eve Weather");
+                this.primaryservice = new EveWeatherService("PiTS Ambient Meter");
                 this.primaryservice.getCharacteristic(Characteristic.CurrentTemperature)
                     .on('get', this.getCurrent.bind(this));
                 break;
